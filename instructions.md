@@ -2,11 +2,11 @@
 
 ## Objetivo
 
-Crear una aplicación web estática, desplegable en GitHub Pages, para llevar una agenda estratégica de vida y desarrollo basada en metas por fecha y en 12 bases civilizacionales.
+Crear una aplicación web estática, desplegable en GitHub Pages, para llevar una agenda estratégica de vida y desarrollo basada en metas, fechas, milestones, fotos y 12 bases civilizacionales.
 
 La app debe ayudar a responder constantemente:
 
-> ¿Qué capacidades estamos construyendo y qué bases estamos descuidando?
+> ¿Qué capacidades estamos construyendo, qué metas están activas, qué fechas importan y qué bases estamos descuidando?
 
 ---
 
@@ -24,6 +24,21 @@ La app debe ayudar a responder constantemente:
 10. ⚖️ **Gobernanza** — poder extremo, IA, inmortales, derechos digitales, incentivos y economía post-trabajo.
 11. 🚀 **Expansión** — Luna, Marte, asteroides, hábitats orbitales y civilizaciones backup.
 12. 🔄 **Movimiento / Flujos** — transporte, logística, distribución, movilidad y transmisión de energía, información y materiales.
+
+---
+
+## Requisitos clave de la app
+
+La app debe manejar desde el inicio:
+
+1. **Timeline horizontal** como vista principal.
+2. **Múltiples fechas por meta**, no solo un año general.
+3. **Milestones internos** dentro de cada meta.
+4. **Fotos e imágenes** por meta y por milestone.
+5. **Filtros reales**, no solo recomendados.
+6. **Vista por bases** para ver qué metas desarrollan cada principio.
+7. **Dashboard de cobertura** para detectar bases descuidadas.
+8. **Revisiones periódicas** para ajustar el plan cada trimestre/año.
 
 ---
 
@@ -45,6 +60,14 @@ TimeLine/
 │   ├── goals.json
 │   ├── phases.json
 │   └── reviews.json
+│
+├── assets/
+│   ├── goals/
+│   │   ├── jj-taco/
+│   │   ├── robotics/
+│   │   ├── construction/
+│   │   └── research/
+│   └── icons/
 │
 └── docs/
     ├── vision.md
@@ -71,25 +94,88 @@ Cada base debe tener:
 }
 ```
 
+---
+
+## Modelo robusto de metas con varias fechas y milestones
+
 ### `data/goals.json`
 
-Cada meta debe tener:
+Cada meta debe soportar:
+
+- fecha general visible
+- fecha de inicio
+- fecha objetivo
+- fecha final real, si aplica
+- múltiples milestones
+- fotos principales
+- fotos por milestone
+- bases relacionadas
+- estado
+- prioridad
+- dependencias
+- notas
+
+Ejemplo:
 
 ```json
 {
   "id": "jj-taco-2026",
-  "year": "2026–2027",
   "emoji": "🌮",
   "title": "Nace JJTaco",
   "summary": "Lo que empezó como un sueño entre José + Janet se convierte en una marca con identidad propia, sabor mexicano y potencial de expansión.",
+  "periodLabel": "2026–2027",
+  "startDate": "2026-01-01",
+  "targetDate": "2027-12-31",
+  "completedDate": null,
   "bases": ["recursos-biosfera", "movimiento-flujos", "gobernanza", "materia"],
   "status": "planned",
   "priority": "high",
+  "category": "business",
+  "dependencies": [],
+  "coverImage": "assets/goals/jj-taco/cover.jpg",
+  "images": [
+    {
+      "src": "assets/goals/jj-taco/logo-draft.jpg",
+      "caption": "Primer concepto visual de la marca",
+      "date": "2026-02-01"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "jj-taco-brand",
+      "title": "Definir marca e identidad",
+      "targetDate": "2026-03-31",
+      "completedDate": null,
+      "status": "planned",
+      "summary": "Nombre, logo, menú inicial, tono de marca y propuesta de valor.",
+      "images": []
+    },
+    {
+      "id": "jj-taco-first-sales",
+      "title": "Primeras ventas",
+      "targetDate": "2026-06-30",
+      "completedDate": null,
+      "status": "planned",
+      "summary": "Validar producto, precio, operación y respuesta de clientes.",
+      "images": []
+    },
+    {
+      "id": "jj-taco-repeatable-model",
+      "title": "Modelo repetible",
+      "targetDate": "2027-12-31",
+      "completedDate": null,
+      "status": "planned",
+      "summary": "Documentar operación, costos, proveedores y sistema de entrenamiento.",
+      "images": []
+    }
+  ],
   "notes": ""
 }
 ```
 
-Estados sugeridos:
+---
+
+## Estados permitidos
 
 ```text
 planned
@@ -100,7 +186,7 @@ cancelled
 revised
 ```
 
-Prioridades sugeridas:
+## Prioridades permitidas
 
 ```text
 low
@@ -109,82 +195,192 @@ high
 critical
 ```
 
----
+## Categorías sugeridas
 
-## Metas iniciales resumidas
-
-| Fecha | Meta | Bases principales |
-|---|---|---|
-| 2026–2027 | 🌮 Nace JJTaco | Recursos, Movimiento, Gobernanza, Materia |
-| 2026–2027 | 💻 Primera empresa tecnológica | Inteligencia, Movimiento, Gobernanza |
-| 2026–2027 | 🤖 Primera línea de automatización y robótica aplicada | Inteligencia, Materia, Movimiento |
-| 2028 | 🏗️ Primer edificio | Materia, Energía, Recursos, Resiliencia |
-| 2028 | 🛠️ Primer laboratorio de prototipos | Materia, Inteligencia, Instituciones |
-| 2028 | ⚡ Eficiencia energética y resiliencia en edificios | Energía, Resiliencia, Materia |
-| 2029 | 🏢 Empresa de construcción e infraestructura | Materia, Energía, Recursos, Resiliencia, Movimiento |
-| 2029 | 🤖 Robótica aplicada a construcción, alimentos y logística | Materia, Inteligencia, Movimiento |
-| 2029 | 🌍 Expansión internacional de JJTaco | Recursos, Movimiento, Gobernanza |
-| 2030 | ❤️ Primera organización social | Instituciones, Gobernanza, Inteligencia |
-| 2030 | 🎓 Formación en IA, automatización y robótica | Inteligencia, Materia, Instituciones |
-| 2030 | ⚖️ Estudio de gobernanza e incentivos | Gobernanza, Inteligencia |
-| 2032 | 🔬 Primer espacio de investigación aplicada | Instituciones, Inteligencia, Materia, Conocimiento fundamental |
-| 2032 | 🤖 Primera empresa formal de robótica aplicada | Materia, Inteligencia, Movimiento, Vida |
-| 2032 | 🩺 Primeras soluciones médicas | Vida, Mente, Inteligencia, Materia |
-| 2032 | 🔭 Programa temprano de conocimiento fundamental | Conocimiento fundamental, Inteligencia, Materia |
-| 2035 | 🧬 Centros de investigación especializados | Vida, Mente, Inteligencia, Instituciones |
-| 2035 | 🧩 Investigación formal en mente, memoria e identidad | Mente, Vida, Inteligencia, Gobernanza |
-| 2035 | 🛡️ Capacidades iniciales de resiliencia | Resiliencia, Energía, Vida, Gobernanza |
-| 2038 | 🔌 Semiconductores, sensores y computación avanzada | Inteligencia, Materia, Vida, Mente, Resiliencia |
-| 2038 | 🏭 Planta manufacturera de materiales, componentes y robótica | Materia, Energía, Resiliencia, Movimiento |
-| 2038 | 🌱 Proyectos serios de recursos y biosfera | Recursos, Energía, Resiliencia |
-| 2042 | 🌎 Fundación internacional | Gobernanza, Instituciones, Vida, Recursos |
-| 2042 | 🎓 Academias internacionales potenciadas con IA | Inteligencia, Instituciones, Conocimiento fundamental, Gobernanza |
-| 2042 | 🤖 Centros de formación en robótica y automatización | Materia, Inteligencia, Instituciones, Movimiento |
-| 2042 | ⚖️ Modelos de gobernanza para tecnología avanzada | Gobernanza, Inteligencia, Vida, Mente |
-| 2045 | 🏙️ Campus completos de investigación | Instituciones, Vida, Inteligencia, Materia, Energía, Recursos, Movimiento |
-| 2045 | 🌱 Recursos y biosfera dentro de los campus | Recursos, Energía, Resiliencia |
-| 2045 | 🛡️ Campus resilientes | Resiliencia, Energía, Vida, Gobernanza |
-| 2050 | 🧠 Avances en vida y mente | Vida, Mente, Inteligencia, Gobernanza |
-| 2050 | 🌆 Ciudad inteligente y resiliente | Resiliencia, Energía, Recursos, Movimiento, Gobernanza, Inteligencia, Materia |
-| 2050 | 🛡️ Sistemas de respaldo civilizacional | Resiliencia, Recursos, Vida, Energía, Gobernanza |
-| 2050 | 🔄 Optimización de movimiento y flujos urbanos | Movimiento, Energía, Recursos, Inteligencia, Materia |
-| 2055+ | 🚀 Infraestructura fuera de la Tierra | Expansión, Recursos, Energía, Materia, Resiliencia |
-| 2055+ | 🏛️ Instituciones que continúan más allá de nosotros | Instituciones, Gobernanza, Inteligencia, Resiliencia |
+```text
+business
+technology
+robotics
+construction
+research
+medicine
+education
+foundation
+energy
+resources
+resilience
+governance
+space
+personal
+```
 
 ---
 
-## Funcionalidades de la app
+## Fechas y milestones
 
-### 1. Vista Timeline
+La app debe distinguir entre:
 
-Mostrar metas agrupadas por año.
+| Campo | Uso |
+|---|---|
+| `periodLabel` | Texto visible, por ejemplo `2026–2027`, `2055+` o `2032` |
+| `startDate` | Fecha real de inicio para ordenar en el timeline |
+| `targetDate` | Fecha objetivo |
+| `completedDate` | Fecha real de cierre, si ya terminó |
+| `milestones[].targetDate` | Fecha objetivo de cada milestone |
+| `milestones[].completedDate` | Fecha real de cierre de cada milestone |
+
+La vista timeline debe ordenar por `startDate`, pero mostrar `periodLabel`.
+
+---
+
+## Fotos e imágenes
+
+La app debe permitir fotos en tres niveles:
+
+### 1. Imagen principal de meta
+
+```json
+"coverImage": "assets/goals/jj-taco/cover.jpg"
+```
+
+### 2. Galería de meta
+
+```json
+"images": [
+  {
+    "src": "assets/goals/jj-taco/logo-draft.jpg",
+    "caption": "Primer concepto visual de la marca",
+    "date": "2026-02-01"
+  }
+]
+```
+
+### 3. Imágenes por milestone
+
+```json
+"milestones": [
+  {
+    "title": "Primer prototipo",
+    "images": [
+      {
+        "src": "assets/goals/robotics/prototype-01.jpg",
+        "caption": "Primer prototipo funcional",
+        "date": "2026-08-15"
+      }
+    ]
+  }
+]
+```
+
+La primera versión puede mostrar solo `coverImage`. La versión 0.3 debe mostrar galerías.
+
+---
+
+## Vista principal: Timeline horizontal
+
+La app debe tener un **timeline horizontal** como vista principal.
+
+### Requisitos de diseño
+
+- Scroll horizontal.
+- Cada año o periodo aparece como una columna o bloque.
+- Las metas aparecen como tarjetas dentro del periodo.
+- En desktop debe verse como línea horizontal.
+- En móvil debe permitir swipe horizontal.
+- Debe tener opción de “compact view” y “expanded view”.
+
+Ejemplo visual conceptual:
+
+```text
+2026–2027        2028              2029              2030
+─────────        ─────             ─────             ─────
+🌮 JJTaco         🏗️ Edificio       🏢 Construcción    ❤️ Organización social
+💻 Tech company   🛠️ Prototipos     🤖 Robótica        🎓 Formación IA/robotics
+🤖 Robotics line  ⚡ Energía        🌍 Expansión       ⚖️ Gobernanza
+```
+
+### Tarjeta de meta
 
 Cada tarjeta debe mostrar:
 
 - emoji
 - título
-- resumen
-- año
+- periodo
+- resumen corto
 - estado
 - prioridad
-- bases relacionadas
+- bases relacionadas como chips
+- foto principal, si existe
+- número de milestones completados / totales
 
 Ejemplo:
 
 ```text
+🌮 Nace JJTaco
 2026–2027
-  🌮 Nace JJTaco
-  💻 Primera empresa tecnológica
-  🤖 Primera línea de automatización y robótica aplicada
-
-2028
-  🏗️ Primer edificio
-  🛠️ Laboratorio de prototipos
+Marca mexicana con potencial de expansión.
+[planned] [high]
+🌱 Recursos  🔄 Movimiento  ⚖️ Gobernanza
+Milestones: 0/3
 ```
 
-### 2. Vista por bases
+---
 
-Mostrar las 12 bases como tarjetas. Al hacer clic en una base, filtrar las metas relacionadas.
+## Vista de detalle de meta
+
+Al hacer clic en una tarjeta, abrir un panel/modal con:
+
+- título
+- resumen
+- fechas
+- bases relacionadas
+- cover image
+- galería
+- milestones
+- notas
+- dependencias
+
+Los milestones deben verse como checklist:
+
+```text
+☐ Definir marca e identidad — target: 2026-03-31
+☐ Primeras ventas — target: 2026-06-30
+☐ Modelo repetible — target: 2027-12-31
+```
+
+---
+
+## Filtros obligatorios
+
+La app debe tener filtros desde la versión 0.2.
+
+Filtros mínimos:
+
+1. **Búsqueda por texto** — título, resumen, notas.
+2. **Año / periodo** — `periodLabel`.
+3. **Base civilizacional** — una o varias bases.
+4. **Estado** — planned, active, paused, completed, cancelled, revised.
+5. **Prioridad** — low, medium, high, critical.
+6. **Categoría** — business, technology, robotics, construction, etc.
+7. **Con fotos / sin fotos**.
+8. **Con milestones vencidos**.
+9. **Con milestones completados**.
+
+Filtros recomendados para versión posterior:
+
+- Dependencias.
+- Metas sin bases asignadas.
+- Metas con menos de 2 milestones.
+- Metas por década.
+- Metas con muchas bases conectadas.
+
+---
+
+## Vista por bases
+
+Mostrar las 12 bases como tarjetas.
+
+Al hacer clic en una base, filtrar las metas relacionadas.
 
 Ejemplo:
 
@@ -198,7 +394,9 @@ Metas relacionadas:
 - 2050: Ciudad inteligente resiliente
 ```
 
-### 3. Dashboard de cobertura
+---
+
+## Dashboard de cobertura
 
 Mostrar cuántas metas tiene cada base.
 
@@ -211,19 +409,17 @@ Ejemplo:
 🚀 Expansión: 1 meta
 ```
 
-Esto sirve para detectar áreas descuidadas.
+También debe mostrar alertas:
 
-### 4. Filtros
+```text
+⚠️ Expansión tiene pocas metas antes de 2055+.
+⚠️ Recursos y biosfera aparece tarde; revisar si debe adelantarse.
+✅ Robótica aparece desde 2026–2027.
+```
 
-Filtros recomendados:
+---
 
-- Año
-- Base
-- Estado
-- Prioridad
-- Texto de búsqueda
-
-### 5. Revisión periódica
+## Revisión periódica
 
 Crear una sección para revisiones trimestrales o anuales.
 
@@ -245,9 +441,10 @@ Cada revisión debe responder:
 - Serio.
 - Limpio.
 - Con emojis como marcadores visuales.
-- Fondo claro u oscuro configurable.
+- Timeline horizontal como vista principal.
 - Tarjetas simples.
-- Enfoque en lectura rápida y actualización fácil.
+- Imágenes opcionales sin saturar la vista.
+- Fondo claro u oscuro configurable.
 - Responsive para celular, tablet y desktop.
 
 Secciones principales:
@@ -260,9 +457,11 @@ Header
   - Botón: Bases
   - Botón: Dashboard
   - Botón: Revisiones
+  - Buscador
+  - Filtros
 
 Main
-  - Vista dinámica según selección
+  - Timeline horizontal o vista seleccionada
 
 Footer
   - Última actualización
@@ -289,19 +488,27 @@ Debe:
 
 1. Cargar `data/bases.json`.
 2. Cargar `data/goals.json`.
-3. Renderizar la vista timeline.
-4. Permitir cambiar a vista por bases.
-5. Renderizar dashboard de cobertura.
-6. Aplicar filtros.
+3. Renderizar la vista timeline horizontal.
+4. Permitir abrir detalle de meta.
+5. Renderizar milestones.
+6. Renderizar fotos si existen.
+7. Permitir cambiar a vista por bases.
+8. Renderizar dashboard de cobertura.
+9. Aplicar filtros.
+10. Detectar milestones vencidos.
 
 ### `src/styles.css`
 
 Debe definir:
 
 - layout general
+- timeline horizontal
 - tarjetas
 - chips de bases
-- colores por prioridad
+- estados
+- prioridades
+- galería de imágenes
+- modal o panel de detalle
 - diseño responsive para móvil
 
 ---
@@ -330,24 +537,34 @@ https://ricardogv2.github.io/TimeLine/
 
 ### Versión 0.1
 
-- Timeline simple.
+- Timeline horizontal simple.
 - Datos en `goals.json`.
-- Tarjetas por año.
-- Sin filtros.
+- Tarjetas por periodo.
+- Modelo con `startDate`, `targetDate` y `milestones`.
+- Sin filtros avanzados.
 
 ### Versión 0.2
 
+- Filtros obligatorios básicos.
 - Vista por bases.
 - Chips de bases.
-- Filtro por base.
+- Filtro por base, estado, prioridad y texto.
 
 ### Versión 0.3
 
-- Dashboard de cobertura.
-- Conteo de metas por base.
-- Filtro por prioridad y estado.
+- Fotos principales.
+- Galerías de metas.
+- Imágenes por milestone.
+- Modal/panel de detalle.
 
 ### Versión 0.4
+
+- Dashboard de cobertura.
+- Conteo de metas por base.
+- Alertas de bases descuidadas.
+- Detección de milestones vencidos.
+
+### Versión 0.5
 
 - Revisiones trimestrales.
 - Archivo `reviews.json`.
@@ -356,7 +573,7 @@ https://ricardogv2.github.io/TimeLine/
 ### Versión 1.0
 
 - App estable.
-- Responsive.
+- Timeline horizontal responsive.
 - GitHub Pages activo.
 - Datos fáciles de editar.
 - Documentación clara.
@@ -373,6 +590,33 @@ src/styles.css
 src/app.js
 data/bases.json
 data/goals.json
+assets/goals/
 ```
 
-Después activar GitHub Pages y validar que el timeline se vea correctamente.
+Después activar GitHub Pages y validar que:
+
+1. El timeline sea horizontal.
+2. Las metas soporten varias fechas.
+3. Los milestones aparezcan dentro del detalle.
+4. Se puedan mostrar fotos.
+5. Los filtros funcionen.
+
+---
+
+## Principio rector
+
+La app no debe ser rígida.
+
+Debe servir para revisar y adaptar la visión conforme cambien:
+
+- tecnologías
+- riesgos
+- recursos
+- prioridades
+- alianzas
+- conocimientos
+- capacidades reales
+
+La app debe ayudar a responder constantemente:
+
+> ¿Qué capacidades estamos construyendo, qué fechas importan, qué milestones están atrasados y qué bases estamos descuidando?
