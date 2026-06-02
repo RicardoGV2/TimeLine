@@ -1,0 +1,29 @@
+.month-item {
+  border-left: 4px solid transparent;
+}
+
+.month-item.month-item-start {
+  border-left-color: #0ea5e9;
+}
+
+.month-item.month-item-target {
+  border-left-color: #f59e0b;
+}
+
+.month-item-kind {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.month-item.month-item-start .month-item-kind {
+  color: #0369a1;
+}
+
+.month-item.month-item-target .month-item-kind {
+  color: #b45309;
+}
