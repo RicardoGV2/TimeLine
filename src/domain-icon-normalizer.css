@@ -1,0 +1,51 @@
+.domain-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.domain-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.domain-name {
+  display: inline;
+}
+
+@media (max-width: 760px) {
+  .domain-item > .domain-label {
+    width: 42px;
+    max-width: 42px;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .domain-item .domain-name {
+    display: none;
+  }
+
+  body.sidebar-expanded .domain-item > .domain-label {
+    width: auto;
+    max-width: none;
+    justify-content: flex-start;
+    overflow: visible;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  body.sidebar-expanded .domain-item .domain-name {
+    display: inline;
+  }
+
+  body.sidebar-expanded .domain-item .domain-icon {
+    font-size: 20px;
+  }
+}
