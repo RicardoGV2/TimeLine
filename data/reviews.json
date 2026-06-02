@@ -1,0 +1,19 @@
+[
+  {
+    "id": "review-2026-q2",
+    "type": "review",
+    "title": "2026 Q2 roadmap review",
+    "date": "2026-06-30",
+    "period": "2026-Q2",
+    "summary": "First review placeholder for checking whether the roadmap, data structure and app views are still useful.",
+    "questions": [
+      "What goals still make sense?",
+      "What goals should change?",
+      "What technologies accelerated?",
+      "What risks appeared?",
+      "Which base is neglected?",
+      "What should be moved, paused or accelerated?"
+    ],
+    "notes": ""
+  }
+]
