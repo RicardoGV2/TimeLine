@@ -8,7 +8,7 @@
     "domain": "business",
     "category": "food-business",
     "periodLabel": "2026",
-    "startDate": "2026-01-01",
+    "startDate": "2026-06-02",
     "targetDate": "2027-12-31",
     "completedDate": null,
     "status": "active",
@@ -26,7 +26,7 @@
       {
         "id": "jj-taco-brand-2026",
         "title": "Definir marca e identidad",
-        "targetDate": "2026-03-31",
+        "targetDate": "2026-06-30",
         "completedDate": null,
         "status": "active",
         "ownerIds": ["ricardo", "janet"],
@@ -37,7 +37,7 @@
       {
         "id": "jj-taco-first-sales-2026",
         "title": "Primeras ventas",
-        "targetDate": "2026-06-30",
+        "targetDate": "2026-09-30",
         "completedDate": null,
         "status": "planned",
         "ownerIds": ["ricardo", "janet"],
@@ -65,8 +65,8 @@
         "priority": "high",
         "assignedTo": ["ricardo", "janet"],
         "finalOwnerId": null,
-        "startDate": "2026-02-01",
-        "targetDate": "2026-03-01",
+        "startDate": "2026-06-02",
+        "targetDate": "2026-07-31",
         "completedDate": null,
         "subtasks": []
       }
@@ -82,7 +82,7 @@
     "domain": "business",
     "category": "technology",
     "periodLabel": "2026",
-    "startDate": "2026-01-01",
+    "startDate": "2026-06-02",
     "targetDate": "2027-12-31",
     "completedDate": null,
     "status": "planned",
@@ -100,7 +100,7 @@
       {
         "id": "tech-problem-selection-2026",
         "title": "Definir problema principal",
-        "targetDate": "2026-01-31",
+        "targetDate": "2026-06-30",
         "completedDate": null,
         "status": "planned",
         "ownerIds": ["ricardo"],
@@ -111,7 +111,7 @@
       {
         "id": "tech-mvp-2026",
         "title": "MVP funcional",
-        "targetDate": "2026-06-30",
+        "targetDate": "2026-09-30",
         "completedDate": null,
         "status": "planned",
         "ownerIds": ["ricardo"],
@@ -132,7 +132,7 @@
     "domain": "business",
     "category": "robotics",
     "periodLabel": "2026",
-    "startDate": "2026-04-01",
+    "startDate": "2026-06-02",
     "targetDate": "2027-12-31",
     "completedDate": null,
     "status": "planned",
