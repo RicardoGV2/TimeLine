@@ -1,0 +1,24 @@
+[
+  {
+    "id": "decision-hybrid-data-architecture-2026",
+    "date": "2026-06-01",
+    "title": "Use hybrid data architecture",
+    "summary": "Use separate JSON files by domain instead of one giant app-data.json.",
+    "madeBy": ["ricardo"],
+    "relatedIdeas": [],
+    "relatedGoals": ["timeline-app-2026"],
+    "reason": "This makes it easier for ChatGPT to safely edit one domain at a time while keeping the project scalable.",
+    "status": "active"
+  },
+  {
+    "id": "decision-timeline-year-month-zoom-2026",
+    "date": "2026-06-02",
+    "title": "Use year-to-month timeline zoom",
+    "summary": "Global timeline shows years. Clicking a year expands into January through December. Clicking an item opens detail.",
+    "madeBy": ["ricardo"],
+    "relatedIdeas": [],
+    "relatedGoals": ["timeline-app-2026"],
+    "reason": "Years are better for strategy, months are better for execution, and details are better for management.",
+    "status": "active"
+  }
+]
