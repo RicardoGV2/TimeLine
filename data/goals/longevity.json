@@ -8,7 +8,7 @@
     "domain": "longevity",
     "category": "health-system",
     "periodLabel": "2026",
-    "startDate": "2026-01-01",
+    "startDate": "2026-06-02",
     "targetDate": "2026-12-31",
     "completedDate": null,
     "status": "active",
@@ -26,7 +26,7 @@
       {
         "id": "longevity-device-map-2026",
         "title": "Organizar devices y mediciones",
-        "targetDate": "2026-03-31",
+        "targetDate": "2026-06-30",
         "completedDate": null,
         "status": "active",
         "ownerIds": ["ricardo"],
