@@ -1,0 +1,41 @@
+[
+  {
+    "id": "timeline-app-2026",
+    "type": "goal",
+    "emoji": "🧰",
+    "title": "Build TimeLine app",
+    "summary": "Crear y mejorar esta app para manejar metas, tareas, recursos, ideas, timeline horizontal, vista mensual y filtros.",
+    "domain": "repo",
+    "category": "timeline-repo",
+    "periodLabel": "2026",
+    "startDate": "2026-01-01",
+    "targetDate": "2026-12-31",
+    "completedDate": null,
+    "status": "active",
+    "priority": "critical",
+    "ownerIds": ["ricardo"],
+    "participantIds": ["ricardo"],
+    "bases": ["inteligencia", "gobernanza", "movimiento-flujos"],
+    "tags": ["repo", "timeline", "github-pages"],
+    "dependencies": [],
+    "relatedGoals": [],
+    "relatedResources": [],
+    "coverImage": "",
+    "images": [],
+    "milestones": [
+      {
+        "id": "timeline-v01-2026",
+        "title": "Deploy first functional version",
+        "targetDate": "2026-06-30",
+        "completedDate": null,
+        "status": "active",
+        "ownerIds": ["ricardo"],
+        "summary": "Publicar la primera versión funcional en GitHub Pages.",
+        "images": [],
+        "tasks": []
+      }
+    ],
+    "tasks": [],
+    "notes": ""
+  }
+]
