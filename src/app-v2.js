@@ -27,7 +27,7 @@ const state = {
   selectedPeriod: null,
   filters: {
     user: 'all',
-    domain: 'all',
+    domains: [],
     base: 'all',
     status: 'all',
     priority: 'all',
@@ -65,6 +65,7 @@ async function loadData() {
   state.resources = await loadJson(DATA_FILES.resources, []);
   state.decisions = await loadJson(DATA_FILES.decisions, []);
   state.reviews = await loadJson(DATA_FILES.reviews, []);
+  state.filters.domains = allDomainIds();
 }
 
 function byId(items) {
@@ -79,6 +80,56 @@ function maps() {
   };
 }
 
+function allDomainIds() {
+  return (state.config?.domains || []).map((domain) => domain.id);
+}
+
+function isDomainSelected(domainId) {
+  return state.filters.domains.includes(domainId);
+}
+
+function setAllDomainsSelected() {
+  state.filters.domains = allDomainIds();
+  syncDomainSelect();
+}
+
+function toggleDomain(domainId) {
+  const selected = new Set(state.filters.domains);
+  if (selected.has(domainId)) selected.delete(domainId);
+  else selected.add(domainId);
+  state.filters.domains = Array.from(selected);
+  syncDomainSelect();
+}
+
+function captureScrollState() {
+  return {
+    timeline: document.querySelector('.timeline-scroll')?.scrollLeft ?? null,
+    month: document.querySelector('.month-scroll')?.scrollLeft ?? null,
+    windowX: window.scrollX,
+    windowY: window.scrollY
+  };
+}
+
+function restoreScrollState(scrollState) {
+  requestAnimationFrame(() => {
+    if (scrollState.timeline !== null) {
+      const timeline = document.querySelector('.timeline-scroll');
+      if (timeline) timeline.scrollLeft = scrollState.timeline;
+    }
+    if (scrollState.month !== null) {
+      const month = document.querySelector('.month-scroll');
+      if (month) month.scrollLeft = scrollState.month;
+    }
+    window.scrollTo(scrollState.windowX, scrollState.windowY);
+  });
+}
+
+function renderWithScrollPreserved() {
+  const scrollState = captureScrollState();
+  render();
+  restoreScrollState(scrollState);
+}
+
 function populateSelect(selectId, items, mapper) {
   const select = $(selectId);
   if (!select) return;
@@ -87,16 +138,35 @@ function populateSelect(selectId, items, mapper) {
   select.value = [...select.options].some((option) => option.value === current) ? current : 'all';
 }
 
+function populateDomainSelect() {
+  const select = $('#filter-domain');
+  if (!select) return;
+  select.multiple = true;
+  select.size = 1;
+  select.title = 'Hold Command/Ctrl or use the domain sidebar to select multiple domains';
+  select.innerHTML = (state.config.domains || [])
+    .map((domain) => `<option value="${domain.id}">${domain.emoji} ${escapeHtml(domain.name)}</option>`)
+    .join('');
+  syncDomainSelect();
+}
+
+function syncDomainSelect() {
+  const select = $('#filter-domain');
+  if (!select) return;
+  Array.from(select.options).forEach((option) => {
+    option.selected = isDomainSelected(option.value);
+  });
+}
+
 function setupFilters() {
   populateSelect('#filter-user', state.config.users, (u) => `<option value="${u.id}">${u.emoji} ${escapeHtml(u.name)}</option>`);
-  populateSelect('#filter-domain', state.config.domains, (d) => `<option value="${d.id}">${d.emoji} ${escapeHtml(d.name)}</option>`);
+  populateDomainSelect();
   populateSelect('#filter-base', state.config.bases, (b) => `<option value="${b.id}">${b.emoji} ${escapeHtml(b.name)}</option>`);
   populateSelect('#filter-status', state.config.statuses, (s) => `<option value="${s}">${escapeHtml(s)}</option>`);
   populateSelect('#filter-priority', state.config.priorities, (p) => `<option value="${p}">${escapeHtml(p)}</option>`);
 
   [
     ['#filter-user', 'user'],
-    ['#filter-domain', 'domain'],
     ['#filter-base', 'base'],
     ['#filter-status', 'status'],
     ['#filter-priority', 'priority']
@@ -104,13 +174,18 @@ function setupFilters() {
     const element = $(selector);
     element?.addEventListener('change', () => {
       state.filters[key] = element.value;
-      render();
+      renderWithScrollPreserved();
     });
+  });
+
+  $('#filter-domain')?.addEventListener('change', (event) => {
+    state.filters.domains = Array.from(event.target.selectedOptions).map((option) => option.value);
+    renderWithScrollPreserved();
   });
 
   $('#filter-search')?.addEventListener('input', (event) => {
     state.filters.search = event.target.value.trim().toLowerCase();
-    render();
+    renderWithScrollPreserved();
   });
 }
 
@@ -139,7 +214,7 @@ function goalMatches(goal) {
     const people = new Set([...(goal.ownerIds || []), ...(goal.participantIds || [])]);
     if (!people.has(f.user)) return false;
   }
-  if (f.domain !== 'all' && goal.domain !== f.domain) return false;
+  if (!state.filters.domains.includes(goal.domain)) return false;
   if (f.base !== 'all' && !(goal.bases || []).includes(f.base)) return false;
   if (f.status !== 'all' && goal.status !== f.status) return false;
   if (f.priority !== 'all' && goal.priority !== f.priority) return false;
@@ -161,28 +236,39 @@ function render() {
   if (state.view === 'dashboard') renderDashboard(root);
   if (state.view === 'knowledge') renderKnowledge(root);
   if (state.view === 'ideas') renderIdeas(root);
+  syncDomainSelect();
 }
 
 function renderDomainSidebar() {
   const list = $('#domain-list');
   if (!list) return;
 
-  list.innerHTML = (state.config.domains || []).map((domain) => {
-    const active = state.filters.domain === domain.id ? 'active' : '';
-    return `
-      <div class="domain-item ${active}" data-domain="${domain.id}">
-        <span>${domain.emoji} ${escapeHtml(domain.name)}</span>
-        <span class="domain-dot" style="background:${domain.color}"></span>
-      </div>
-    `;
-  }).join('');
+  list.innerHTML = `
+    <div class="domain-select-summary">
+      <button type="button" class="domain-mini-action" data-domain-action="all">All</button>
+      <span>${state.filters.domains.length}/${allDomainIds().length} selected</span>
+    </div>
+    ${(state.config.domains || []).map((domain) => {
+      const selected = isDomainSelected(domain.id);
+      return `
+        <div class="domain-item ${selected ? 'selected' : 'excluded'}" data-domain="${domain.id}" title="Toggle ${escapeHtml(domain.name)}">
+          <span>${domain.emoji} ${escapeHtml(domain.name)}</span>
+          <span class="domain-dot" style="background:${domain.color}"></span>
+        </div>
+      `;
+    }).join('')}
+  `;
+
+  list.querySelector('[data-domain-action="all"]')?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    setAllDomainsSelected();
+    renderWithScrollPreserved();
+  });
 
   document.querySelectorAll('.domain-item').forEach((item) => {
     item.addEventListener('click', () => {
-      state.filters.domain = state.filters.domain === item.dataset.domain ? 'all' : item.dataset.domain;
-      const select = $('#filter-domain');
-      if (select) select.value = state.filters.domain;
-      render();
+      toggleDomain(item.dataset.domain);
+      renderWithScrollPreserved();
     });
   });
 }
