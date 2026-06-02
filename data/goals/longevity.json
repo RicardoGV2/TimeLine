@@ -1,0 +1,41 @@
+[
+  {
+    "id": "longevity-system-2026",
+    "type": "goal",
+    "emoji": "💎",
+    "title": "Longevity Research System goals",
+    "summary": "Registrar mejoras, dispositivos, mediciones y tareas relacionadas con el sistema de salud y longevidad.",
+    "domain": "longevity",
+    "category": "health-system",
+    "periodLabel": "2026",
+    "startDate": "2026-01-01",
+    "targetDate": "2026-12-31",
+    "completedDate": null,
+    "status": "active",
+    "priority": "high",
+    "ownerIds": ["ricardo", "janet"],
+    "participantIds": ["ricardo", "janet"],
+    "bases": ["vida", "inteligencia", "mente", "resiliencia"],
+    "tags": ["longevity", "health", "devices", "repo"],
+    "dependencies": [],
+    "relatedGoals": [],
+    "relatedResources": [],
+    "coverImage": "",
+    "images": [],
+    "milestones": [
+      {
+        "id": "longevity-device-map-2026",
+        "title": "Organizar devices y mediciones",
+        "targetDate": "2026-03-31",
+        "completedDate": null,
+        "status": "active",
+        "ownerIds": ["ricardo"],
+        "summary": "Definir qué dispositivos comprar, qué miden y cómo conectan con los análisis.",
+        "images": [],
+        "tasks": []
+      }
+    ],
+    "tasks": [],
+    "notes": "Do not store sensitive medical records here. Use high-level goals and device/research tracking."
+  }
+]
