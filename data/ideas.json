@@ -1,0 +1,17 @@
+[
+  {
+    "id": "idea-snack-carts",
+    "type": "idea",
+    "emoji": "🛒",
+    "title": "Snack carts",
+    "summary": "Idea de negocio con carritos de snacks para eventos, fiestas y puntos móviles.",
+    "createdDate": "2026-06-01",
+    "createdBy": "ricardo",
+    "suggestedDomain": "business",
+    "suggestedBases": ["recursos-biosfera", "movimiento-flujos", "gobernanza", "materia"],
+    "status": "inbox",
+    "decisionStatus": "needs-review",
+    "linkedGoalId": null,
+    "notes": "Pendiente decidir si va dentro de JJTaco, como línea separada o como nueva empresa."
+  }
+]
