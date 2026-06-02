@@ -1,0 +1,29 @@
+[
+  {
+    "id": "work-placeholder-2026",
+    "type": "goal",
+    "emoji": "💼",
+    "title": "Work tasks inbox",
+    "summary": "Espacio inicial para registrar tareas laborales de Ricardo o Janet sin incluir información confidencial.",
+    "domain": "work",
+    "category": "work-management",
+    "periodLabel": "2026",
+    "startDate": "2026-01-01",
+    "targetDate": "2026-12-31",
+    "completedDate": null,
+    "status": "inbox",
+    "priority": "medium",
+    "ownerIds": ["ricardo", "janet"],
+    "participantIds": ["ricardo", "janet"],
+    "bases": ["inteligencia", "movimiento-flujos"],
+    "tags": ["work", "inbox"],
+    "dependencies": [],
+    "relatedGoals": [],
+    "relatedResources": [],
+    "coverImage": "",
+    "images": [],
+    "milestones": [],
+    "tasks": [],
+    "notes": "Use only high-level summaries. Do not store confidential work information."
+  }
+]
