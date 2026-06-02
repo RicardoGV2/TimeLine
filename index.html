@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TimeLine</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="brand">
+          <div class="brand-mark">↗</div>
+          <div>
+            <h1>TimeLine</h1>
+            <p>Living roadmap for goals, ideas, tasks and knowledge</p>
+          </div>
+        </div>
+
+        <nav class="top-nav" aria-label="Main navigation">
+          <button class="nav-button active" data-view="timeline">☷ Timeline</button>
+          <button class="nav-button" data-view="bases">▧ Bases</button>
+          <button class="nav-button" data-view="dashboard">▦ Dashboard</button>
+          <button class="nav-button" data-view="knowledge">☰ Knowledge</button>
+          <button class="nav-button" data-view="ideas">✦ Ideas</button>
+        </nav>
+      </header>
+
+      <section class="filters" aria-label="Filters">
+        <label>
+          User
+          <select id="filter-user">
+            <option value="all">All</option>
+          </select>
+        </label>
+        <label>
+          Domain
+          <select id="filter-domain">
+            <option value="all">All</option>
+          </select>
+        </label>
+        <label>
+          Base
+          <select id="filter-base">
+            <option value="all">All</option>
+          </select>
+        </label>
+        <label>
+          Status
+          <select id="filter-status">
+            <option value="all">All</option>
+          </select>
+        </label>
+        <label>
+          Priority
+          <select id="filter-priority">
+            <option value="all">All</option>
+          </select>
+        </label>
+        <label>
+          Search
+          <input id="filter-search" type="search" placeholder="Search goals, milestones, notes..." />
+        </label>
+      </section>
+
+      <main class="layout">
+        <aside class="sidebar" aria-label="Domains">
+          <div class="sidebar-title">Domains</div>
+          <div id="domain-list" class="domain-list"></div>
+          <button class="new-goal-button" type="button">+ New Goal</button>
+        </aside>
+
+        <section class="content">
+          <div id="view-root"></div>
+        </section>
+      </main>
+    </div>
+
+    <aside id="detail-panel" class="detail-panel" aria-label="Detail panel" aria-hidden="true">
+      <button id="close-detail" class="close-detail" type="button" aria-label="Close">×</button>
+      <div id="detail-content"></div>
+    </aside>
+
+    <div id="panel-backdrop" class="panel-backdrop" hidden></div>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
