@@ -1,0 +1,36 @@
+[
+  {
+    "id": "resource-building-book-001",
+    "type": "resource",
+    "resourceType": "book",
+    "title": "Book for first building",
+    "author": "Unknown",
+    "summary": "Libro útil para aprender construcción, permisos, diseño e infraestructura.",
+    "notes": "Placeholder para registrar libros importantes sobre construcción.",
+    "sourceUrl": "",
+    "photo": "",
+    "createdDate": "2026-06-01",
+    "createdBy": "ricardo",
+    "relatedGoals": ["first-building-2028"],
+    "relatedBases": ["materia", "energia", "resiliencia"],
+    "tags": ["construction", "book", "building", "infrastructure"],
+    "status": "active"
+  },
+  {
+    "id": "resource-innovators-dilemma",
+    "type": "resource",
+    "resourceType": "book",
+    "title": "The Innovator's Dilemma",
+    "author": "Clayton M. Christensen",
+    "summary": "Resource placeholder for innovation strategy and research/institution building.",
+    "notes": "Can be linked to research and company-building goals.",
+    "sourceUrl": "",
+    "photo": "",
+    "createdDate": "2026-06-01",
+    "createdBy": "ricardo",
+    "relatedGoals": ["research-space-2032"],
+    "relatedBases": ["instituciones-investigacion", "inteligencia"],
+    "tags": ["innovation", "book", "strategy"],
+    "status": "active"
+  }
+]
