@@ -1,0 +1,30 @@
+{
+  "users": [
+    { "id": "ricardo", "name": "Ricardo", "emoji": "R", "color": "#60a5fa" },
+    { "id": "janet", "name": "Janet", "emoji": "J", "color": "#f9a8d4" }
+  ],
+  "domains": [
+    { "id": "work", "name": "Work", "emoji": "💼", "color": "#2563eb" },
+    { "id": "business", "name": "Business", "emoji": "🏬", "color": "#2f8f2f" },
+    { "id": "personal", "name": "Personal", "emoji": "👤", "color": "#7c3aed" },
+    { "id": "research", "name": "Research", "emoji": "🧪", "color": "#d97706" },
+    { "id": "longevity", "name": "Longevity", "emoji": "💎", "color": "#0d9488" },
+    { "id": "repo", "name": "Repos", "emoji": "🧰", "color": "#64748b" }
+  ],
+  "bases": [
+    { "id": "inteligencia", "emoji": "🧠", "name": "Inteligencia", "description": "IA, agentes, automatización y ciencia asistida.", "color": "#6366f1" },
+    { "id": "conocimiento-fundamental", "emoji": "🔭", "name": "Conocimiento fundamental", "description": "Matemáticas, física, teoría profunda y comprensión de la realidad.", "color": "#0f766e" },
+    { "id": "instituciones-investigacion", "emoji": "🏛️", "name": "Instituciones de investigación", "description": "Centros donde se concentra talento y se producen descubrimientos.", "color": "#7c3aed" },
+    { "id": "vida", "emoji": "🧬", "name": "Vida", "description": "Medicina, cáncer, órganos artificiales, longevidad y bioseguridad.", "color": "#be123c" },
+    { "id": "energia", "emoji": "⚡", "name": "Energía", "description": "Electricidad abundante, barata y resiliente.", "color": "#ca8a04" },
+    { "id": "materia", "emoji": "🏗️", "name": "Materia", "description": "Materiales, robótica, manufactura y construcción.", "color": "#ea580c" },
+    { "id": "recursos-biosfera", "emoji": "🌱", "name": "Recursos y biosfera", "description": "Agua, comida, minerales, reciclaje, suelos, océanos y biodiversidad.", "color": "#16a34a" },
+    { "id": "mente", "emoji": "🧩", "name": "Mente", "description": "Neurociencia, connectomics, memoria, identidad y conciencia.", "color": "#9333ea" },
+    { "id": "resiliencia", "emoji": "🛡️", "name": "Resiliencia", "description": "Apagones, pandemias, meteoritos, ciberataques, ciudades-arca y backups.", "color": "#334155" },
+    { "id": "gobernanza", "emoji": "⚖️", "name": "Gobernanza", "description": "Poder extremo, IA, inmortales, derechos digitales, incentivos y economía post-trabajo.", "color": "#0891b2" },
+    { "id": "expansion", "emoji": "🚀", "name": "Expansión", "description": "Luna, Marte, asteroides, hábitats orbitales y civilizaciones backup.", "color": "#1d4ed8" },
+    { "id": "movimiento-flujos", "emoji": "🔄", "name": "Movimiento / Flujos", "description": "Transporte, logística, distribución, movilidad y transmisión de energía, información y materiales.", "color": "#0d9488" }
+  ],
+  "statuses": ["inbox", "planned", "active", "paused", "completed", "cancelled", "revised"],
+  "priorities": ["low", "medium", "high", "critical"]
+}
