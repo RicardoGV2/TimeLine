@@ -1,0 +1,19 @@
+.year-column.current-year,
+.month-card.current-month {
+  position: relative;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18), 0 18px 50px rgba(37, 99, 235, 0.12);
+  background: linear-gradient(180deg, rgba(219, 234, 254, 0.72), rgba(255, 255, 255, 0.96));
+}
+
+.year-column.current-year .year-button,
+.month-card.current-month h3 {
+  color: #1d4ed8;
+}
+
+.month-card.current-month h3::after {
+  content: " current month";
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 600;
+}
