@@ -1,12 +1,23 @@
 let activeGoalFocusId = null;
+let lastSelectedGoalId = null;
+
+document.addEventListener('click', (event) => {
+  const selected = event.target.closest('[data-goal-id]');
+  if (selected?.dataset.goalId) {
+    lastSelectedGoalId = selected.dataset.goalId;
+  }
+});
 
 function getOpenDetailGoalId() {
+  if (lastSelectedGoalId) return lastSelectedGoalId;
+
   const title = document.querySelector('#detail-content .detail-title')?.textContent || '';
-  const allCards = Array.from(document.querySelectorAll('.goal-card'));
+  const allCards = Array.from(document.querySelectorAll('[data-goal-id]'));
   const matchedCard = allCards.find((card) => {
-    const cardTitle = card.querySelector('.goal-title')?.textContent || '';
+    const cardTitle = card.querySelector('.goal-title, strong')?.textContent || '';
     return title && cardTitle && title.includes(cardTitle.replace(/^\S+\s+/, '').trim());
   });
+
   return matchedCard?.dataset.goalId || null;
 }
 
