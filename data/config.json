@@ -7,8 +7,15 @@
     { "id": "work", "name": "Work", "emoji": "💼", "color": "#2563eb" },
     { "id": "business", "name": "Business", "emoji": "🏬", "color": "#2f8f2f" },
     { "id": "personal", "name": "Personal", "emoji": "👤", "color": "#7c3aed" },
+    { "id": "family", "name": "Family", "emoji": "🏠", "color": "#e11d48" },
     { "id": "research", "name": "Research", "emoji": "🧪", "color": "#d97706" },
     { "id": "longevity", "name": "Longevity", "emoji": "💎", "color": "#0d9488" },
+    { "id": "health", "name": "Health", "emoji": "🩺", "color": "#be123c" },
+    { "id": "learning", "name": "Learning", "emoji": "🎓", "color": "#9333ea" },
+    { "id": "finance", "name": "Finance", "emoji": "💰", "color": "#65a30d" },
+    { "id": "legal", "name": "Legal", "emoji": "⚖️", "color": "#0891b2" },
+    { "id": "travel", "name": "Travel", "emoji": "✈️", "color": "#0284c7" },
+    { "id": "home", "name": "Home", "emoji": "🏡", "color": "#92400e" },
     { "id": "repo", "name": "Repos", "emoji": "🧰", "color": "#64748b" }
   ],
   "bases": [
