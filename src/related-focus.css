@@ -1,0 +1,44 @@
+body.goal-focus-active .goal-card,
+body.goal-focus-active .month-item,
+body.goal-focus-active .base-card,
+body.goal-focus-active .resource-card,
+body.goal-focus-active .idea-card {
+  opacity: 0.22;
+  filter: grayscale(0.25);
+}
+
+body.goal-focus-active .goal-card.goal-focus-match,
+body.goal-focus-active .month-item.goal-focus-match,
+body.goal-focus-active .base-card.goal-focus-match,
+body.goal-focus-active .resource-card.goal-focus-match,
+body.goal-focus-active .idea-card.goal-focus-match {
+  opacity: 1;
+  filter: none;
+}
+
+.goal-focus-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+
+.goal-focus-button,
+.goal-focus-clear {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.goal-focus-button.active {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.goal-focus-clear {
+  color: var(--muted);
+}
