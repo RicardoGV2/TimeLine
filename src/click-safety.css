@@ -1,0 +1,19 @@
+#panel-backdrop[hidden],
+.panel-backdrop[hidden] {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+.panel-backdrop {
+  pointer-events: none;
+}
+
+.detail-panel.open + .panel-backdrop:not([hidden]),
+body.detail-open .panel-backdrop:not([hidden]) {
+  pointer-events: auto;
+}
+
+body:not(.detail-open) .panel-backdrop {
+  display: none !important;
+  pointer-events: none !important;
+}
