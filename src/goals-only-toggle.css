@@ -20,11 +20,11 @@
   display: none !important;
 }
 
-body.goals-only-mode .month-card:has(.month-item:not(.hide-for-goals-only)) .goal-summary {
+body.goals-only-mode .month-card.month-card-has-goal-items .goal-summary {
   display: none;
 }
 
-body.goals-only-mode .month-card:not(:has(.month-item:not(.hide-for-goals-only))) .goal-summary {
+body.goals-only-mode .month-card:not(.month-card-has-goal-items) .goal-summary {
   display: block;
 }
 
