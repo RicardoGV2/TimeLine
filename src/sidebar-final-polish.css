@@ -1,0 +1,92 @@
+.sidebar .domain-select-summary {
+  display: grid !important;
+  grid-template-columns: 46px minmax(0, 1fr) !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  gap: 6px !important;
+  padding: 0 8px 0 0 !important;
+  margin: 0 0 12px !important;
+}
+
+.sidebar .domain-select-summary .domain-mini-action {
+  justify-self: start !important;
+  max-width: 44px !important;
+  padding: 5px 9px !important;
+}
+
+.sidebar .domain-select-summary span {
+  display: block !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-align: right !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-size: 11px !important;
+}
+
+.sidebar .domain-item {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto auto !important;
+  align-items: center !important;
+  justify-content: initial !important;
+  column-gap: 8px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 10px 12px 10px 10px !important;
+}
+
+.sidebar .domain-item .domain-label,
+.sidebar .domain-item > span:first-child {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.sidebar .domain-item .domain-only-button {
+  justify-self: end !important;
+  margin: 0 !important;
+}
+
+.sidebar .domain-item .domain-dot {
+  justify-self: end !important;
+  width: 8px !important;
+  height: 8px !important;
+  margin: 0 4px 0 0 !important;
+}
+
+@media (max-width: 760px) {
+  .sidebar .domain-select-summary {
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    padding: 0 !important;
+  }
+
+  body.sidebar-expanded .sidebar .domain-select-summary {
+    grid-template-columns: 46px minmax(0, 1fr) !important;
+    justify-items: stretch !important;
+    padding-right: 8px !important;
+  }
+
+  body:not(.sidebar-expanded) .sidebar .domain-select-summary span {
+    display: none !important;
+  }
+
+  .sidebar .domain-item {
+    grid-template-columns: 1fr auto !important;
+    justify-items: center !important;
+    padding: 12px 8px !important;
+  }
+
+  body.sidebar-expanded .sidebar .domain-item {
+    grid-template-columns: minmax(0, 1fr) auto auto !important;
+    justify-items: stretch !important;
+    padding: 12px 14px 12px 12px !important;
+  }
+
+  body:not(.sidebar-expanded) .sidebar .domain-item .domain-dot {
+    margin-right: 0 !important;
+  }
+}
