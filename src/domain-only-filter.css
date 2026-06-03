@@ -1,0 +1,38 @@
+.domain-only-button {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 11px;
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.domain-item:hover .domain-only-button,
+.domain-item:focus-within .domain-only-button,
+body.sidebar-expanded .domain-only-button {
+  opacity: 1;
+}
+
+.domain-only-button:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.domain-long-press-feedback {
+  outline: 2px solid var(--primary);
+  background: var(--primary-soft) !important;
+}
+
+@media (max-width: 760px) {
+  .domain-only-button {
+    display: none;
+  }
+
+  body.sidebar-expanded .domain-only-button {
+    display: inline-flex;
+    opacity: 1;
+  }
+}
