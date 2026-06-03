@@ -8,6 +8,10 @@ document.addEventListener('click', (event) => {
   }
 });
 
+function isMonthlyTimelineView() {
+  return Boolean(document.querySelector('.year-expanded .month-card'));
+}
+
 function getOpenDetailGoalId() {
   if (lastSelectedGoalId) return lastSelectedGoalId;
 
@@ -44,6 +48,7 @@ function addRelatedFocusButton() {
   const clearButton = actions.querySelector('.goal-focus-clear');
 
   focusButton.addEventListener('click', () => {
+    if (!isMonthlyTimelineView()) return;
     if (activeGoalFocusId === goalId) {
       clearGoalFocus();
       return;
@@ -85,13 +90,18 @@ function updateFocusButtonState() {
   if (!actions || !button) return;
   const goalId = actions.dataset.goalId;
   const active = activeGoalFocusId === goalId;
+  const monthlyView = isMonthlyTimelineView();
+
   button.classList.toggle('active', active);
-  button.textContent = active ? 'Showing only this goal' : 'Show only this goal';
+  button.disabled = !monthlyView;
+  button.title = monthlyView ? 'Show only timeline items related to this goal' : 'Available only in the expanded monthly view';
+  button.textContent = !monthlyView ? 'Open a year to focus this goal' : active ? 'Showing only this goal' : 'Show only this goal';
 }
 
 const relatedFocusObserver = new MutationObserver(() => {
   addRelatedFocusButton();
   applyGoalFocus();
+  updateFocusButtonState();
 });
 relatedFocusObserver.observe(document.body, { childList: true, subtree: true });
 
