@@ -8,6 +8,7 @@ const FINAL_CARD_GOAL_FILES = [
 ];
 
 let finalCardGoals = [];
+let finalCardGoalsReady = null;
 let lastPointerOpenAt = 0;
 
 async function loadFinalCardGoals() {
@@ -30,9 +31,11 @@ function findGoalById(goalId) {
     || finalCardGoals.find((goal) => goal.id === goalId);
 }
 
-function openCardDetailFromElement(element) {
+async function openCardDetailFromElement(element) {
   const goalId = element?.dataset?.goalId;
   if (!goalId) return false;
+
+  await finalCardGoalsReady;
 
   const goal = findGoalById(goalId);
   if (!goal) return false;
@@ -94,17 +97,14 @@ function escapeFinal(value = '') {
     .replaceAll("'", '&#039;');
 }
 
-function handleCardOpen(event) {
+async function handleCardOpen(event) {
   const card = event.target.closest?.('.month-item, .goal-card');
   if (!card) return;
 
-  event.preventDefault();
-  event.stopPropagation();
-  event.stopImmediatePropagation?.();
+  const opened = await openCardDetailFromElement(card);
+  if (!opened) return;
 
-  if (openCardDetailFromElement(card)) {
-    lastPointerOpenAt = Date.now();
-  }
+  lastPointerOpenAt = Date.now();
 }
 
 document.addEventListener('pointerup', handleCardOpen, true);
@@ -125,4 +125,4 @@ const finalCardObserver = new MutationObserver(() => makeCardsFocusableFinal());
 finalCardObserver.observe(document.body, { childList: true, subtree: true });
 
 makeCardsFocusableFinal();
-loadFinalCardGoals();
+finalCardGoalsReady = loadFinalCardGoals();
