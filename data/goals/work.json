@@ -32,36 +32,36 @@
         "ownerIds": ["ricardo"],
         "summary": "Complete the overall work goal.",
         "images": [],
-        "tasks": []
+        "tasks": [
+          {
+            "id": "task-work-ricardo-a14-review-docs-layouts-2026",
+            "title": "Review project documentation and existing layouts",
+            "status": "active",
+            "priority": "high",
+            "assignedTo": ["ricardo"],
+            "finalOwnerId": "ricardo",
+            "startDate": "2026-05-01",
+            "targetDate": "2026-05-31",
+            "completedDate": null,
+            "subtasks": []
+          },
+          {
+            "id": "task-work-ricardo-a14-dri-shadowing-2026",
+            "title": "Have one on one with a DRI of the technology to gain insights on A14 or shadow simple tasks with guidance",
+            "status": "active",
+            "priority": "high",
+            "assignedTo": ["ricardo"],
+            "finalOwnerId": "ricardo",
+            "startDate": "2026-06-01",
+            "targetDate": "2026-06-30",
+            "completedDate": null,
+            "subtasks": []
+          }
+        ]
       }
     ],
-    "tasks": [
-      {
-        "id": "task-work-ricardo-a14-review-docs-layouts-2026",
-        "title": "Review project documentation and existing layouts",
-        "status": "active",
-        "priority": "high",
-        "assignedTo": ["ricardo"],
-        "finalOwnerId": "ricardo",
-        "startDate": "2026-05-01",
-        "targetDate": "2026-05-31",
-        "completedDate": null,
-        "subtasks": []
-      },
-      {
-        "id": "task-work-ricardo-a14-dri-shadowing-2026",
-        "title": "Have one on one with a DRI of the technology to gain insights on A14 or shadow simple tasks with guidance",
-        "status": "active",
-        "priority": "high",
-        "assignedTo": ["ricardo"],
-        "finalOwnerId": "ricardo",
-        "startDate": "2026-06-01",
-        "targetDate": "2026-06-30",
-        "completedDate": null,
-        "subtasks": []
-      }
-    ],
-    "notes": "Imported from Ricardo's work goals. Only title, goal date, and development actions were included. Do not add confidential work details."
+    "tasks": [],
+    "notes": "Imported from Ricardo's work goals. Tasks are stored under milestones. Do not add confidential work details."
   },
   {
     "id": "work-ricardo-shared-ai-automation-tool-2026",
@@ -96,48 +96,48 @@
         "ownerIds": ["ricardo"],
         "summary": "Complete the overall work goal.",
         "images": [],
-        "tasks": []
+        "tasks": [
+          {
+            "id": "task-work-ricardo-ai-automation-prototype-2026",
+            "title": "Develop prototype of AI/automation solution",
+            "status": "active",
+            "priority": "high",
+            "assignedTo": ["ricardo"],
+            "finalOwnerId": "ricardo",
+            "startDate": "2026-06-01",
+            "targetDate": "2026-07-15",
+            "completedDate": null,
+            "subtasks": []
+          },
+          {
+            "id": "task-work-ricardo-ai-automation-guidelines-2026",
+            "title": "Document tool and create usage guidelines",
+            "status": "planned",
+            "priority": "high",
+            "assignedTo": ["ricardo"],
+            "finalOwnerId": "ricardo",
+            "startDate": "2026-07-16",
+            "targetDate": "2026-08-15",
+            "completedDate": null,
+            "subtasks": []
+          },
+          {
+            "id": "task-work-ricardo-ai-automation-early-adoption-2026",
+            "title": "Share prototypes and enable early adoption",
+            "status": "planned",
+            "priority": "high",
+            "assignedTo": ["ricardo"],
+            "finalOwnerId": "ricardo",
+            "startDate": "2026-08-16",
+            "targetDate": "2026-09-10",
+            "completedDate": null,
+            "subtasks": []
+          }
+        ]
       }
     ],
-    "tasks": [
-      {
-        "id": "task-work-ricardo-ai-automation-prototype-2026",
-        "title": "Develop prototype of AI/automation solution",
-        "status": "active",
-        "priority": "high",
-        "assignedTo": ["ricardo"],
-        "finalOwnerId": "ricardo",
-        "startDate": "2026-06-01",
-        "targetDate": "2026-07-15",
-        "completedDate": null,
-        "subtasks": []
-      },
-      {
-        "id": "task-work-ricardo-ai-automation-guidelines-2026",
-        "title": "Document tool and create usage guidelines",
-        "status": "planned",
-        "priority": "high",
-        "assignedTo": ["ricardo"],
-        "finalOwnerId": "ricardo",
-        "startDate": "2026-07-16",
-        "targetDate": "2026-08-15",
-        "completedDate": null,
-        "subtasks": []
-      },
-      {
-        "id": "task-work-ricardo-ai-automation-early-adoption-2026",
-        "title": "Share prototypes and enable early adoption",
-        "status": "planned",
-        "priority": "high",
-        "assignedTo": ["ricardo"],
-        "finalOwnerId": "ricardo",
-        "startDate": "2026-08-16",
-        "targetDate": "2026-09-10",
-        "completedDate": null,
-        "subtasks": []
-      }
-    ],
-    "notes": "Imported from Ricardo's work goals. Only title, goal date, and development actions were included. Do not add confidential work details."
+    "tasks": [],
+    "notes": "Imported from Ricardo's work goals. Tasks are stored under milestones. Do not add confidential work details."
   },
   {
     "id": "work-ricardo-ai-adoption-training-2026",
@@ -172,48 +172,48 @@
         "ownerIds": ["ricardo"],
         "summary": "Complete the overall work goal.",
         "images": [],
-        "tasks": []
+        "tasks": [
+          {
+            "id": "task-work-ricardo-ai-training-content-2026",
+            "title": "Prepare training content based on an example use case",
+            "status": "active",
+            "priority": "high",
+            "assignedTo": ["ricardo"],
+            "finalOwnerId": "ricardo",
+            "startDate": "2026-06-01",
+            "targetDate": "2026-07-31",
+            "completedDate": null,
+            "subtasks": []
+          },
+          {
+            "id": "task-work-ricardo-ai-training-session-2026",
+            "title": "Deliver AI training session",
+            "status": "planned",
+            "priority": "high",
+            "assignedTo": ["ricardo"],
+            "finalOwnerId": "ricardo",
+            "startDate": "2026-08-01",
+            "targetDate": "2026-09-10",
+            "completedDate": null,
+            "subtasks": []
+          },
+          {
+            "id": "task-work-ricardo-ai-training-follow-up-2026",
+            "title": "Provide follow-up support and address questions",
+            "status": "planned",
+            "priority": "medium",
+            "assignedTo": ["ricardo"],
+            "finalOwnerId": "ricardo",
+            "startDate": "2026-09-11",
+            "targetDate": "2026-09-20",
+            "completedDate": null,
+            "subtasks": []
+          }
+        ]
       }
     ],
-    "tasks": [
-      {
-        "id": "task-work-ricardo-ai-training-content-2026",
-        "title": "Prepare training content based on an example use case",
-        "status": "active",
-        "priority": "high",
-        "assignedTo": ["ricardo"],
-        "finalOwnerId": "ricardo",
-        "startDate": "2026-06-01",
-        "targetDate": "2026-07-31",
-        "completedDate": null,
-        "subtasks": []
-      },
-      {
-        "id": "task-work-ricardo-ai-training-session-2026",
-        "title": "Deliver AI training session",
-        "status": "planned",
-        "priority": "high",
-        "assignedTo": ["ricardo"],
-        "finalOwnerId": "ricardo",
-        "startDate": "2026-08-01",
-        "targetDate": "2026-09-10",
-        "completedDate": null,
-        "subtasks": []
-      },
-      {
-        "id": "task-work-ricardo-ai-training-follow-up-2026",
-        "title": "Provide follow-up support and address questions",
-        "status": "planned",
-        "priority": "medium",
-        "assignedTo": ["ricardo"],
-        "finalOwnerId": "ricardo",
-        "startDate": "2026-09-11",
-        "targetDate": "2026-09-20",
-        "completedDate": null,
-        "subtasks": []
-      }
-    ],
-    "notes": "Imported from Ricardo's work goals. Only title, goal date, and development actions were included. Do not add confidential work details."
+    "tasks": [],
+    "notes": "Imported from Ricardo's work goals. Tasks are stored under milestones. Do not add confidential work details."
   },
   {
     "id": "work-ricardo-emir-insights-2026",
@@ -248,36 +248,36 @@
         "ownerIds": ["ricardo"],
         "summary": "Complete the overall work goal.",
         "images": [],
-        "tasks": []
+        "tasks": [
+          {
+            "id": "task-work-ricardo-emir-flow-setup-2026",
+            "title": "Learn EMIR flow setup",
+            "status": "active",
+            "priority": "high",
+            "assignedTo": ["ricardo"],
+            "finalOwnerId": "ricardo",
+            "startDate": "2026-06-01",
+            "targetDate": "2026-07-31",
+            "completedDate": null,
+            "subtasks": []
+          },
+          {
+            "id": "task-work-ricardo-emir-analyze-results-2026",
+            "title": "Analyze results",
+            "status": "planned",
+            "priority": "high",
+            "assignedTo": ["ricardo"],
+            "finalOwnerId": "ricardo",
+            "startDate": "2026-08-01",
+            "targetDate": "2026-09-15",
+            "completedDate": null,
+            "subtasks": []
+          }
+        ]
       }
     ],
-    "tasks": [
-      {
-        "id": "task-work-ricardo-emir-flow-setup-2026",
-        "title": "Learn EMIR flow setup",
-        "status": "active",
-        "priority": "high",
-        "assignedTo": ["ricardo"],
-        "finalOwnerId": "ricardo",
-        "startDate": "2026-06-01",
-        "targetDate": "2026-07-31",
-        "completedDate": null,
-        "subtasks": []
-      },
-      {
-        "id": "task-work-ricardo-emir-analyze-results-2026",
-        "title": "Analyze results",
-        "status": "planned",
-        "priority": "high",
-        "assignedTo": ["ricardo"],
-        "finalOwnerId": "ricardo",
-        "startDate": "2026-08-01",
-        "targetDate": "2026-09-15",
-        "completedDate": null,
-        "subtasks": []
-      }
-    ],
-    "notes": "Imported from Ricardo's work goals. Only title, goal date, and development actions were included. Do not add confidential work details."
+    "tasks": [],
+    "notes": "Imported from Ricardo's work goals. Tasks are stored under milestones. Do not add confidential work details."
   },
   {
     "id": "work-ricardo-dri-ownership-execution-2027",
