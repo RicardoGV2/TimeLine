@@ -1,0 +1,22 @@
+.goal-card,
+.month-item {
+  position: relative;
+  z-index: 5;
+  pointer-events: auto !important;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.goal-card * ,
+.month-item * {
+  pointer-events: none;
+}
+
+.detail-panel.open {
+  z-index: 1000;
+}
+
+.panel-backdrop:not([hidden]) {
+  z-index: 999;
+}
