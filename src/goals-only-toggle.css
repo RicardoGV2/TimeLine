@@ -1,0 +1,36 @@
+.goals-only-toggle {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.goals-only-toggle.active {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.month-item.hide-for-goals-only {
+  display: none !important;
+}
+
+body.goals-only-mode .month-card:has(.month-item:not(.hide-for-goals-only)) .goal-summary {
+  display: none;
+}
+
+body.goals-only-mode .month-card:not(:has(.month-item:not(.hide-for-goals-only))) .goal-summary {
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .goals-only-toggle {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}
