@@ -1,0 +1,67 @@
+.month-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 10px 28px 18px 0;
+  scroll-padding-left: 18px;
+  scroll-padding-right: 28px;
+}
+
+.month-grid {
+  align-items: stretch;
+  padding-left: 0;
+  padding-right: 28px;
+}
+
+.month-card {
+  min-width: 0;
+  overflow: visible;
+}
+
+.month-item {
+  overflow: hidden;
+}
+
+.month-item strong {
+  display: block;
+  line-height: 1.25;
+}
+
+.month-goal-icon {
+  display: inline-flex;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.month-item-kind {
+  display: block;
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.month-item-start {
+  border-left: 4px solid #0ea5e9;
+}
+
+.month-item-target {
+  border-left: 4px solid #f59e0b;
+}
+
+.content {
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .month-scroll {
+    padding-right: 18px;
+  }
+
+  .month-grid {
+    padding-right: 18px;
+  }
+}
