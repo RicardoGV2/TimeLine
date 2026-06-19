@@ -426,23 +426,23 @@ function buildMonthlyItems(goals, months) {
   const allowed = new Set(months.map((month) => month.key));
 
   goals.forEach((goal) => {
-    const addDateItem = (date, label, type) => {
+    const addDateItem = (date, label, type, id) => {
       if (!date) return;
       const key = date.slice(0, 7);
       if (!allowed.has(key)) return;
-      output[key].push({ date, label, type, goal });
+      output[key].push({ date, label, type, id, goal });
     };
 
-    addDateItem(goal.startDate, `Start: ${goal.title}`, 'goal-start');
-    addDateItem(goal.targetDate, `Target: ${goal.title}`, 'goal-target');
+    addDateItem(goal.startDate, `Start: ${goal.title}`, 'goal-start', `${goal.id}::start`);
+    addDateItem(goal.targetDate, `Target: ${goal.title}`, 'goal-target', `${goal.id}::target`);
 
     (goal.milestones || []).forEach((milestone) => {
-      addDateItem(milestone.targetDate, milestone.title, 'milestone');
+      addDateItem(milestone.targetDate, milestone.title, 'milestone', milestone.id);
     });
 
     (goal.tasks || []).forEach((task) => {
-      addDateItem(task.targetDate, task.title, 'task');
-      (task.subtasks || []).forEach((subtask) => addDateItem(subtask.targetDate, subtask.title, 'subtask'));
+      addDateItem(task.targetDate, task.title, 'task', task.id);
+      (task.subtasks || []).forEach((subtask) => addDateItem(subtask.targetDate, subtask.title, 'subtask', subtask.id));
     });
   });
 
@@ -454,7 +454,7 @@ function renderMonthColumn(month, items) {
     <section class="month-card">
       <h3>${escapeHtml(month.short)}</h3>
       ${items.map((item) => `
-        <div class="month-item" data-goal-id="${item.goal.id}">
+        <div class="month-item" data-goal-id="${item.goal.id}" data-item-id="${escapeHtml(item.id || '')}" data-item-type="${escapeHtml(item.type)}" data-target-date="${escapeHtml(item.date || '')}">
           <strong>${iconForItemType(item.type)} ${escapeHtml(item.label)}</strong><br />
           <small>${escapeHtml(item.date)} · ${escapeHtml(item.goal.domain)}</small>
         </div>
@@ -512,7 +512,7 @@ function openDetail(goal) {
     <h3>Related bases</h3>
     <div class="chips">${bases.map((base) => `<span class="chip">${base.emoji} ${escapeHtml(base.name)}</span>`).join('') || '<span class="chip">No bases</span>'}</div>
     <h3>Milestones</h3>
-    <ul class="milestone-list">${(goal.milestones || []).map((milestone) => `<li><strong>${escapeHtml(milestone.title)}</strong><br><small>${escapeHtml(milestone.status)} · target ${escapeHtml(milestone.targetDate || '—')}</small><p>${escapeHtml(milestone.summary || '')}</p></li>`).join('') || '<li>No milestones yet.</li>'}</ul>
+    <ul class="milestone-list">${(goal.milestones || []).map((milestone) => renderMilestoneDetail(goal, milestone)).join('') || '<li>No milestones yet.</li>'}</ul>
     <h3>Tasks</h3>
     <ul class="task-list">${(goal.tasks || []).map((task) => `<li><strong>${escapeHtml(task.title)}</strong><br><small>${escapeHtml(task.status)} · target ${escapeHtml(task.targetDate || '—')}</small></li>`).join('') || '<li>No tasks yet.</li>'}</ul>
     <h3>Linked resources</h3>
@@ -523,9 +523,64 @@ function openDetail(goal) {
     <p>${escapeHtml(goal.notes || 'No notes yet.')}</p>
   `;
 
+  wireMilestoneDetailItems();
   panel?.classList.add('open');
   panel?.setAttribute('aria-hidden', 'false');
   if (backdrop) backdrop.hidden = false;
+}
+
+function renderMilestoneDetail(goal, milestone) {
+  const targetDate = milestone.targetDate || '';
+  const isClickable = Boolean(targetDate);
+  return `
+    <li class="${isClickable ? 'detail-clickable' : ''}" data-detail-item-id="${escapeHtml(milestone.id || '')}" data-goal-id="${escapeHtml(goal.id)}" data-target-date="${escapeHtml(targetDate)}" ${isClickable ? 'tabindex="0" role="button"' : ''}>
+      <strong>${escapeHtml(milestone.title)}</strong><br>
+      <small>${escapeHtml(milestone.status)} · target ${escapeHtml(targetDate || '—')}</small>
+      <p>${escapeHtml(milestone.summary || '')}</p>
+      ${isClickable ? '<span class="detail-item-hint">Click to open this milestone in timeline</span>' : ''}
+    </li>
+  `;
+}
+
+function wireMilestoneDetailItems() {
+  document.querySelectorAll('#detail-content .milestone-list li.detail-clickable').forEach((item) => {
+    item.addEventListener('click', () => navigateToMilestone(item));
+    item.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      navigateToMilestone(item);
+    });
+  });
+}
+
+function navigateToMilestone(detailItem) {
+  const targetDate = detailItem.dataset.targetDate;
+  const goalId = detailItem.dataset.goalId;
+  const detailItemId = detailItem.dataset.detailItemId || '';
+  if (!targetDate || !goalId) return;
+
+  const year = targetDate.slice(0, 4);
+  const monthKey = targetDate.slice(0, 7);
+  closeDetail();
+  state.view = 'timeline';
+  state.selectedPeriod = year;
+  render();
+
+  setTimeout(() => {
+    const goalSelector = `.month-item[data-goal-id="${CSS.escape(goalId)}"]`;
+    const exactSelector = detailItemId ? `${goalSelector}[data-item-id="${CSS.escape(detailItemId)}"]` : '';
+    const candidates = Array.from(document.querySelectorAll(goalSelector));
+    const match = (exactSelector ? document.querySelector(exactSelector) : null)
+      || candidates.find((item) => (item.dataset.targetDate || '').startsWith(monthKey))
+      || candidates.find((item) => (item.querySelector('small')?.textContent || '').includes(monthKey))
+      || candidates[0];
+    if (!match) return;
+
+    document.querySelectorAll('.detail-navigation-target').forEach((item) => item.classList.remove('detail-navigation-target'));
+    match.classList.add('detail-navigation-target');
+    match.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'center' });
+    setTimeout(() => match.classList.remove('detail-navigation-target'), 2600);
+  }, 100);
 }
 
 function closeDetail() {
