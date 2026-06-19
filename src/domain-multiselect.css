@@ -42,7 +42,7 @@
 }
 
 .domain-item.excluded .domain-dot {
-  background: #cbd5e1 !important;
+  background: var(--muted) !important;
 }
 
 .domain-dot {

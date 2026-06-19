@@ -58,10 +58,10 @@
     height: 100dvh;
     padding: 72px 10px 18px;
     overflow-y: auto;
-    background: rgba(255, 255, 255, 0.96);
+    background: var(--surface-elevated);
     border-right: 1px solid var(--border);
     border-bottom: 0;
-    box-shadow: 18px 0 45px rgba(15, 23, 42, 0.12);
+    box-shadow: var(--shadow);
     transform: translateX(-110%);
     transition: width 0.2s ease, transform 0.2s ease;
     backdrop-filter: blur(16px);

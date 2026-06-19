@@ -3,11 +3,11 @@
 }
 
 .month-item.month-item-start {
-  border-left-color: #0ea5e9;
+  border-left-color: #38bdf8;
 }
 
 .month-item.month-item-target {
-  border-left-color: #f59e0b;
+  border-left-color: #fbbf24;
 }
 
 .month-item-kind {
@@ -21,9 +21,9 @@
 }
 
 .month-item.month-item-start .month-item-kind {
-  color: #0369a1;
+  color: #7dd3fc;
 }
 
 .month-item.month-item-target .month-item-kind {
-  color: #b45309;
+  color: #fcd34d;
 }
